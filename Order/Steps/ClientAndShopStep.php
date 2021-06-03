@@ -17,11 +17,12 @@ class ClientAndShopStep extends WizardStep
 
     public function viewData(Request $request): array
     {
-        return $this->withFormData(
-            [
-                'clients' => DB::select('select id, name from clients'),
-                'shops' => DB::select('select id,name from shops')
-            ]);
+        return [
+            'client_id' => $this->data('client_id'),
+            'shop_id' => $this->data('shop_id'),
+            'clients' => DB::select('select id, name from clients'),
+            'shops' => DB::select('select id, name from shops')
+        ];
 
     }
 
